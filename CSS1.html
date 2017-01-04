@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS常用属性</title>
+    <style>
+        h1 {
+            color: #2b669a;
+        }
+        a {
+            text-decoration: none;
+            color: #265a88;
+            font-weight: bold;
+            text-size-adjust: auto;
+            height: 20px;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 14px;
+        }
+        .title {
+           text-align: center;
+            color: #0f0f0f;
+            border-bottom: 1px solid #cccccc;
+        }
+        .menu {
+            width: 328px;
+            display: flex;
+            flex-wrap: wrap;
+            position: fixed;
+            right: 0;
+        }
+        .menu button {
+            width: 328px;
+            height: 20px;
+            color: #265a88;
+            font-weight: bold;
+        }
+        .menu a:first-child button {
+            letter-spacing: -1px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="title">CSS常用属性笔记</h1>
+<div class="menu">
+    <a href="#select"><button>选择器（基础选择器、组合选择器、伪元素、伪类）</button></a>
+    <a href="#position"><button>定位、尺寸</button></a>
+    <a href="#margin"><button>内外边距（margin、padding）</button></a>
+    <a href="#border"><button>边框</button></a>
+    <a href="#layout"><button>布局</button></a>
+    <a href="#bgc"><button>背景、颜色、渐变</button></a>
+    <a href="#text"><button>字体、文本、文本装饰、书写模式</button></a>
+    <a href="#list"><button>列表、表格</button></a>
+    <a href="#content"><button>内容</button></a>
+    <a href="#interface"><button>界面样式</button></a>
+    <a href="#column"><button>多列</button></a>
+    <a href="#flex"><button>伸缩盒</button></a>
+    <a href="#transform"><button>转换、过渡、动画</button></a>
+    <a href="#clip"><button>裁剪（clip、clip-path）、遮罩（mask）</button></a>
+    <a href="#unit"><button>单位（长度、角度、时间、频率、分辨率、颜色）</button></a>
+    <a href="#math"><button>函数</button></a>
+    <a href="#media"><button>媒体查询</button></a>
+    <a href="#personal"><button>私有属性（IE、Firefox、Webkit）</button></a>
+    <a href="#others"><button>其他</button></a>
+
+</div>
+
+<h1 id="select">选择器</h1>
+<h4>（1）基础选择器</h4>
+<p>E ： 元素选择器（以DOM元素名称来匹配）</p>
+<p>.classname ：类选择器（以类名来匹配）</p>
+<p>#id ：ID选择器（以唯一标识符id属性匹配）</p>
+<p>* ：通配选择器（可匹配任意类型的DOM元素）</p>
+<br>
+
+<h4>（2）组合选择器</h4>
+<p>A + B ：相邻兄弟选择器（匹配A元素后的兄弟B元素，B元素必须紧跟着A元素）</p>
+<p>A ~ B ：普通兄弟选择器（匹配A元素后的兄弟B元素，B元素只需在A元素后，不要求紧跟）</p>
+<p>A > B ：子选择器（匹配A元素内的直接后代B元素，不包含孙辈）</p>
+<p>A B   ：后代选择器（匹配A元素内的B元素，包含所有匹配的子孙后代）</p>
+<br>
+
+
+<h4>（3）属性选择器</h4>
+<p>E[attr]        ： 匹配有attr属性的E元素</p>
+<p>E[attr="val"]  ： 匹配有attr属性，且attr值为“val”的E元素</p>
+<p>E[attr~="val"] ： 匹配有attr属性，且attr值是一个以空格作为分隔的值列表，其中至少一个值为“val”的E元素</p>
+<p>E[attr^="val"] ： 匹配有attr属性，且attr值是以val开头的E元素</p>
+<p>E[attr$="val"] ： 匹配有attr属性，且attr值是以val结尾的E元素</p>
+<p>E[attr*="val"] ： 匹配有attr属性，且attr值包含“value”的E元素</p>
+<p>E[attr|="val"] ： 匹配有attr属性，且attr值是一个以空格为分隔的值列表，其中至少一个值为“val”或至少一个值以“val-”开头的E元素。</p>
+<br>
+
+
+<h4>（3）伪元素</h4>
+<p>E::after / E:after  ：两个等价，用来创建已选中元素的一个虚拟的最后子元素（行内元素），必须设置content属性</p>
+<p>E::before / E:before ：两个等价，用来创建已选中元素的一个虚拟的第一个子元素（行内元素），必须设置content属性</p>
+<p>E::first-letter / E:first-letter ： 匹配已选中元素内的文字的第一行的第一个字母（只作用于块元素）</p>
+<p>E::selection ： 设置文档被选择时的样式</p>
+<p>E::first-line / E:first-line ：设置匹配元素内的第一行文字（只作用于块元素）</p>
+<p>E::placeholder ：设置表单输入框占位符</p>
+<br>
+
+
+<h4>（4）伪类</h4>
+<p>E:checked ：匹配用户界面上处于选中状态的元素E。(用于input type为radio与checkbox时)</p>
+<p>E:disabled ：匹配页面上任何被禁用的元素</p>
+<p>E:enabled ：匹配页面上任何启用的元素</p>
+<p>E:empty ： 匹配没有子元素的元素</p>
+<p>E:first-child ：匹配父元素的第一个子元素E，E必须是某个元素的子元素</p>
+<p>E:first-of-type ： 匹配同类型中的第一个兄弟元素E，E必须是某个元素的子元素</p>
+<p>E:focus ： 匹配一个成为焦点的元素（该元素的onfocus事件发生）</p>
+<p>E:link  ： 设置超链接a在未被访问状态的样式</p>
+<p>E:visited：匹配超链接a在其链接地址已被访问过的元素</p>
+<p>E:active ： 匹配被用户激活的元素（在鼠标点击与释放之间发生的事件）</p>
+<p>E:hover ： 匹配鼠标悬停在其上面的元素</p>
+<p>E:last-child ：匹配父元素的最后一个子元素E，E必须是某个元素的子元素</p>
+<p>E:not(x) ：否定伪类，匹配不符合参数选择器X描述的元素。X不能包含另外一个否定选择器</p>
+<p>E:nth-child(n) ：匹配父元素的第n个子元素E，假设该子元素不是E，则选择符无效</p>
+<p>E:nth-last-child(n) ：匹配父元素的倒数第n个子元素E，假设该子元素不是E，则选择符无效</p>
+<p>E:nth-last-of-type(n) ：匹配同类型中的倒数第n个同级兄弟元素E</p>
+<p>E:nth-of-type(n)：匹配同类型中的第n个兄弟元素E</p>
+<p>E:only-child：匹配父元素仅有的一个子元素E，E元素必须是某个元素的子元素</p>
+<p>E:only-of-type：匹配代表了任意一个元素，这个元素E没有其他相同类型的兄弟元素</p>
+<p>E:root：匹配文档树的根元素，即html</p>
+<p>E:target：匹配URL中的锚点指向的E元素</p>
+<p>E:invalid ：当元素的内容无法通过输入的类型设置的验证时匹配</p>
+<p>E:valid：当元素的内容通过输入的类型设置的验证时匹配</p>
+<p>E:fullscreen：匹配位于全屏状态下的元素</p>
+<p>E:lang(en)：匹配lang属性的起始值是en的E元素</p>
+<p>E:optional：匹配可选（没有设置“required”）的输入元素</p>
+<p>E:in-range：匹配输入的值在指定区间内的元素</p>
+<p>E:out-of-range：匹配输入的值在指定区间外的元素</p>
+<p>E:read-only：匹配设置 "readonly"（只读） 属性的元素</p>
+<p>E:read-write：匹配没有设置“readonly”属性的元素</p>
+<p>E:required： 匹配设置了 "required" 属性的元素</p>
+<br>
+
+<h1 id="position">定位、尺寸</h1>
+<h4>1）定位</h4>
+<p>position：设置元素的定位方式</p>
+<p>top：设置一个定位元素的上外边距边界与其包含块（父元素）上边界之间的偏移</p>
+<p>right：设置定位元素右外边距边界与其包含块右边界之间的偏移</p>
+<p>bottom：设置定位元素下外边距边界与其包含块下边界之间的偏移</p>
+<p>left：设置定位元素左外边距边界与其包含块左边界之间的偏移</p>
+<p>z-index：设置一个元素的堆叠顺序，可为负数（只作用于定义了position为非static的元素）</p>
+<br>
+
+<h4>（2）尺寸</h4>
+<p>width：设置元素的宽度</p>
+<p>min-width：设置元素的最小宽度</p>
+<p>max-width：设置元素的最大宽度</p>
+<p>height：设置元素的高度</p>
+<p>min-height：设置元素的最小高度</p>
+<p>max-height：设置元素的最大高度</p>
+<br>
+
+<h1 id="margin">内外边距（margin、padding）</h1>
+<h4>（1）margin</h4>
+<p>margin：设置元素周围的空间，也就是给定元素的四个（上右下左）方向的外边距属性（可使用 margin: 0 auto 水平居中）</p>
+<p>margin-top：设置元素的上边距</p>
+<p>margin-right：设置元素的右边距</p>
+<p>margin-bottom：设置元素的下边距</p>
+<p>margin-left：设置元素的左边距</p>
+<span>margin折叠：某些相邻的margin会发生合并</span>
+<br>
+
+<h4>（2）padding</h4>
+<p>padding：设置元素的内边距（元素边框与元素内容之间的空间）</p>
+<p>padding-top：设置元素的顶部内边距</p>
+<p>padding-right：设置元素右边内边距</p>
+<p>padding-bottom：设置元素底部内边距</p>
+<p>padding-left：设置元素左边内边距</p>
+<br>
+
+<h1 id="border">边框</h1>
+<p>border：设置元素的边框（width style color）</p>
+<p>border-width：设置元素边框的宽度</p>
+<p>border-style：设置元素边框的样式</p>
+<p>border-color：设置元素边框的颜色</p>
+<br>
+
+<h4>单独设置元素上边框</h4>
+<p>border-top</p>
+<p>border-top-width</p>
+<p>border-top-style</p>
+<p>border-top-color</p>
+<br>
+
+<h4>单独设置元素的有边框</h4>
+<p>border-right</p>
+<p>border-right-width</p>
+<p>border-right-style</p>
+<p>border-right-color</p>
+<br>
+<h4>单独设置元素的下边框</h4>
+<p>border-bottom</p>
+<p>border-bottom-width</p>
+<p>border-bottom-style</p>
+<p>border-bottom-color</p>
+<br>
+<h4>单独设置元素的左边框</h4>
+<p>border-left</p>
+<p>border-left-width</p>
+<p>border-left-style</p>
+<p>border-left-color</p>
+<br>
+<p>border-radius：设置边框（左上、右上、右下、左下）四个圆角</p>
+<p>border-top-left-radius：设置边框左上角的圆角</p>
+<p>border-top-right-radius：设置边框的右上角的圆角</p>
+<p>border-bottom-right-radius：设置边框的右下角的圆角</p>
+<p>border-bottom-left-radius：设置边框的左下角的圆角</p>
+<br>
+<p>box-shadow：设置阴影（可以设定多组效果，每组参数值以逗号分隔）</p>
+<br>
+<p>border-image：设置边框的图像（属性：source slice width outset repeat）</p>
+<p>border-image-source：设置边框的图像路径</p>
+<p>border-image-slice：设置图标边框向内偏移量</p>
+<p>border-image-width：设置图像边框的宽度</p>
+<p>border-image-outset：设置图像边框的扩展</p>
+<p>border-image-repeat：设置图像边框是否平铺</p>
+<br>
+<h1 id="layout">布局</h1>
+<p>display：设置元素渲染出来的盒类型（如何显示）</p>
+<p>float：设置元素是否及如何浮动</p>
+<p>clear：用来清除浮动</p>
+<p>visibility：设置元素是否显示（占的位置依旧存在）</p>
+<p>overflow：设置元素处理溢出内容的方式</p>
+<p>overflow-x：设置元素处理横向溢出内容的方式</p>
+<p>overflow-y：设置元素处理纵向溢出内容的方式</p>
+<p>overflow-wrap：设置当内容溢出时，是否允许换行（和word-wrap一样）</p>
+
+<h1 id="bgc">背景、颜色、渐变</h1>
+<h4>（1）背景</h4>
+<p>background：设置背景（属性：color position size repeat origin clip attachment image）（可设置多个背景，每组属性间用逗号分隔）</p>
+<p>background-color：设置背景色</p>
+<p>background-image：设置背景路径（可设置多个背景，每组属性间用逗号分隔）</p>
+<p>background-repeat：设置背景是否平铺及平铺方式</p>
+<p>background-attachment：设置背景图像是否固定或者随着页面的其余部分滚动</p>
+<p>background-position：设置背景图像的位置</p>
+<p>background-origin：设置背景图像的定位区域</p>
+<p>background-clip：设置背景图像的绘画区域</p>
+<p>background-size：设置背景图像的大小</p>
+
+<h4>（2）颜色</h4>
+<p>color：设置文本颜色</p>
+<p>opacity：设置元素的不透明度（0~1）</p>
+
+<h4>（3）渐变</h4>
+<p>linear-gradient()：创建线性渐变</p>
+<p>radial-gradient()：创建径向渐变</p>
+<p>repeating-linear-gradient()：创建重复的线性渐变</p>
+<p>repeating-radial-gradient()：创建重复的径向渐变</p>
+
+<h1 id="text">字体、文本、文本装饰、书写模式</h1>
+<h4>（1）字体</h4>
+<p>font：设置元素的文本特性（style variant weight size lineHeight family）</p>
+<p>font-style：设置文本字体样式</p>
+<p>font-variant：设置文本是否为小型的大写字母</p>
+<p>font-weight：设置文本的字体粗细</p>
+<p>font-size：设置文本的字体大小</p>
+<p>font-family：设置文本的字体名称列表</p>
+<p>font-stretch：设置文字是否横向拉伸变形</p>
+<p>font-size-adjust：设置字体大小取决于小写字母，而不是大写字母</p>
+
+<p>@font-face：设置自定义字体</p>
+
+<h4></h4>（2）文本
+<p>text-transform：设置文本的大小写</p>
+<p>white-space：设置元素中的空格的处理方式</p>
+<p>tab-size：设置制表符的长度</p>
+<p>word-break：设置怎样在单词内断行</p>
+<p>word-wrap/overflow-wrap：两者等价，设置内容溢出时是否断行</p>
+<p>text-align：设置行内内容相对它的块父元素的水平对齐方式</p>
+<p>text-align-last：设置内容最后一行的水平对齐方式</p>
+<p>text-justify：设置文本怎样对齐及对齐间距</p>
+<p>word-spacing：设置字与字之间的间距</p>
+<p>letter-spacing：设置字符间的间距</p>
+<p>text-indent：设置文本的缩进</p>
+<p>vertical-align：设置内联元素在行框内的垂直对齐方式</p>
+<p>line-height：设置文本的行高</p>
+<p>text-size-adjust：设移动端页面中元素文本的大小调整</p>
+
+<h4>（3）文本装饰</h4>
+<p>text-decoration：设置文本的排版（line style color）</p>
+<p>text-decoration-line：设置文本的排版种类</p>
+<p>text-decoration-color：设置文本的排版颜色</p>
+<p>text-decoration-style：设置文本的排版样式</p>
+<p>text-underline-position：设置文本的下划线的位置（支持度不高）</p>
+<p>text-shadow：设置文本的阴影</p>
+
+<h4>（4）书写模式</h4>
+<p>direction：设置文本流的方向</p>
+<p>unicode-bidi：用于同一个页面里存在从不同方向读进的文本显示</p>
+<p>writing-mode：设置内容块固有的书写方向</p>
+
+<h1 id="list">列表、表格</h1>
+<h4>（1）列表</h4>
+<p>list-style：设置列表项目的属性（type position image）</p>
+<p>list-style-image：设置列表项标记的图像</p>
+<p>list-style-position：设置列表项标记的排列位置</p>
+<p>list-style-type：设置列表项标记的类型</p>
+
+<h4>（2）表格</h4>
+<p>table-layout：设置表格布局算法</p>
+<p>border-collapse：设置表格的边框是分开还是合并</p>
+<p>border-spacing：设置相邻单元格边框之间的距离</p>
+<p>caption-side：设置表格标题的位置</p>
+<p>empty-cells：设置当表格的单元格内无内容时，是否显示该单元格的边框</p>
+
+<h1 id="content">内容</h1>
+<p>content：用来插入生成内容（一般和:before及:after伪元素配合使用）</p>
+<p>counter-increment：设置当一个selector发生时计数器增加的值</p>
+<p>counter-reset：创建或重置一个或多个计数器</p>
+<p>quotes：设置嵌套引用的引号类型</p>
+
+<h1 id="interface">界面样式</h1>
+<p>appearance：设置外观按照本地默认样式（使用时要加前缀）</p>
+<p>text-overflow：设置当文本溢出时，如何处理</p>
+<p>outline：设置元素周围的轮廓（width style color）</p>
+<p>outline-width：设置轮廓的宽度</p>
+<p>outline-style：设置轮廓的样式</p>
+<p>outline-color：设置轮廓的颜色</p>
+<p>outline-offset：设置轮廓在border边缘外的偏移</p>
+<p>cursor：设置鼠标悬浮在元素上的外观</p>
+<p>zoom：设置元素的缩放比例</p>
+<p>box-sizing：设置元素的盒模型组成模式</p>
+<p>resize：设置元素是否允许用户缩放</p>
+<p>user-select：设置是否允许用户选中文本</p>
+<p>pointer-events：设置在何时成为鼠标事件的target</p>
+
+
+<h1 id="column">多列</h1>
+<p>columns：设置列宽和列数（width count）</p>
+<p>column-width：设置列宽</p>
+<p>column-count：设置列数</p>
+<p>column-gap：设置列与列之间的间距</p>
+<p>column-rule：设置列与列之间的边框（width style color）</p>
+<p>column-rule-width：设置列与列之间的边框宽度</p>
+<p>column-rule-style：设置列与列之间的边框样式</p>
+<p>column-rule-color：设置列与列之间的边框颜色</p>
+<p>column-span：设置元素是否横跨所有列</p>
+<p>column-fill：设置所有列的高度是否统一（以最高为主）</p>
+<p>column-break-before：设置元素之前是否断行</p>
+<p>column-break-after：设置元素之后是否断行</p>
+<p>column-break-inside：设置元素内部是否断行</p>
+
+<h1 id="flex">伸缩盒</h1>
+<p>flex：设置弹性盒元素的子元素如何分配空间（grow shrink basis）</p>
+<p>flex-grow：设置弹性盒的扩展比率</p>
+<p>flex-shrink：设置弹性盒的收缩比率/p>
+<p>flex-basis：设置弹性盒伸缩基准值</p>
+<p>flex-flow：设置弹性盒元素的子元素排列方式（direction wrap）</p>
+<p>flex-direction：设置内部元素如何在弹性盒内布局，定义了主轴的方向</p>
+<p>flex-wrap：设置弹性盒内的子元素是单行或多行，同时横轴的方向决定了新行堆叠方向</p>
+<p>align-items：设置子元素在弹性盒的当前行的侧轴（纵轴）方向上的对齐方式</p>
+<p>justify-content：设置弹性盒子元素在主轴（横轴）方向上的对齐方式</p>
+<p>align-content：设置弹性盒在侧轴方向上右额外空间时，如何排列每一行</p>
+<p>align-self：设置子元素在侧轴（纵轴）方向上的对齐方式</p>
+<p>order：设置弹性盒元素的子元素出现的顺序，可为负数</p>
+
+<h1 id="transform">转换、过渡、动画</h1>
+<h4>（1）转换</h4>
+<p>transform：设置元素的2D或3D转换</p>
+<p>transform-origin：设置元素进行转换的位置</p>
+<p>transform-style：设置嵌套元素是怎样在三维空间中呈现</p>
+<p>perspective：设置透视效果</p>
+<p>perspective-origin：设置透视点的位置</p>
+<p>backface-visibility：设置元素背面面向用户时是否可见</p>
+
+<h4>（2）过渡</h4>
+<p>transition：设置元素变换时的过渡（property duration timing-function delay）</p>
+<p>transition-property：设置元素中的过渡属性</p>
+<p>transition-duration：设置元素的过渡持续时间</p>
+<p>transition-timing-function：设置元素的过渡动画类型</p>
+<p>transition-delay：设置元素延迟过渡的时间</p>
+
+<h4></h4>（3）动画
+<p></p>animation：设置元素所应用的动画特效（keyframes）
+<p></p>animation-name：设置元素所应用的动画名称
+<p></p>animation-duration：设置元素动画的持续时间
+<p></p>animation-timing-function：设置元素动画的过渡类型
+<p></p>animation-delay：设置元素动画的延迟时间
+<p></p>animation-iteration-count：设置元素动画的循环次数
+<p></p>animation-direction：设置元素动画在循环中是否反向运动
+<p></p>animation-play-state：设置元素动画的状态
+<p></p>animation-fill-mode：设置当动画不播放时，要应用到元素的样式
+
+<p>cubic-bezier()：设置贝塞尔曲线，生成速度曲线（一般和animation使用）</p>
+<p>CSS3的贝塞尔曲线（cubic-bezier）</p>
+
+<h1 id="clip">裁剪（clip、clip-path）、遮罩（mask）</h1>
+<h4>（1）裁剪</h4>
+<p>clip：设置元素的可视区域，区域外的部分是透明的</p>
+<p>clip-path：设置元素的可视区域。</p>
+
+<h1 id="unit">单位（长度、角度、时间、频率、分辨率）</h1>
+<h4>（1）长度</h4>
+<p>em：相对于当前对象内文本的字体尺寸</p>
+<p>ex：相对于字符“x”的高度，通常为字体高度的一半</p>
+<p>ch：数字“0”的宽度</p>
+<p>rem：相对于根元素（html元素）font-size计算值的倍数</p>
+
+<p>vw：相对于视口的宽度，视口宽度的 1/100。</p>
+<p>vh：相对于视口的高度，视口高度的1/100</p>
+<p>vmax：相对于视口的宽度或高度，取宽度与高度之间的最大值。</p>
+<p>vmin：相对于视口的宽度或高度，取宽度与高度之间的最小值。</p>
+
+<p>cm：厘米</p>
+<p>mm：毫米</p>
+<p>q：1/4毫米</p>
+<p>in：英寸</p>
+<p>pt：点</p>
+<p>pc：派卡</p>
+<p>px：像素</p>
+
+<h4>（2）角度值</h4>
+<p>deg：度</p>
+<p>grad：梯度</p>
+<p>rad：弧度</p>
+<p>turn：转、圈</p>
+
+<h4>（3）时间值</h4>
+<p>s：秒</p>
+<p>ms：毫秒</p>
+
+<h4>（4）频率值</h4>
+<p>Hz：赫兹</p>
+<p>kHz：千赫兹</p>
+
+<h4>（5）分辨率</h4>
+<p>dpi：每英寸包含点的数量</p>
+<p>dpcm：每厘米包含点的数量</p>
+<p>dppx：每像素包含点的数量</p>
+
+<h4>（6）颜色值</h4>
+<p>color name：颜色名称</p>
+<p>HEX：十六进制记法</p>
+<p>RGB：rgb记法</p>
+<p>RGBA：rgba记法</p>
+<p>HSL：hsl记法</p>
+<p>HSLA：hsla记法</p>
+<p>transparent：全透明</p>
+<p>currentColor：当前颜色</p>
+
+<h1 id="math">函数</h1>
+<p>calc()：用于动态计算长度值（+、-、*、/）</p>
+<p>attr()：返回属性值</p>
+
+<p>image()：设置图像</p>
+<p>image-set()：设置根据用户设备的分辨率匹配合适的图像</p>
+
+<h1 id="media">媒体查询</h1>
+<p>width：定义输出设备中的页面可见区域宽度</p>
+<p>height：定义输出设备中的页面可见区域高度</p>
+<p>device-width：定义输出设备的屏幕可见宽度</p>
+<p>device-height：定义输出设备的屏幕可见高度</p>
+<p>orientation：定义输出设备中的页面可见区域高度是否大于或等于宽度</p>
+<p>aspect-ratio：定义输出设备中的页面可见区域宽度与高度的比率</p>
+<p>device-aspect-ratio：定义输出设备的屏幕可见宽度与高度的比率</p>
+<p>color：定义输出设备每一组彩色原件的个数。如果不是彩色设备，则值等于0</p>
+<p>color-index：定义在输出设备的彩色查询表中的条目数。如果没有使用彩色查询表，则值等于0</p>
+<p>monochrome：定义在一个单色框架缓冲区中每像素包含的单色原件个数。如果不是单色设备，则值等于0</p>
+<p>resolution：定义设备的分辨率</p>
+<p>scan：定义电视类设备的扫描工序</p>
+<p>grid：用来查询输出设备是否使用栅格或点阵</p>
+
+<h1 id="personal">私有属性（IE、Firefox、Webkit）</h1>
+<h4>（1）IE</h4>
+<p>scrollbar-3dlight-color</p>
+<p>scrollbar-darkshadow-color</p>
+<p>scrollbar-highlight-color</p>
+<p>scrollbar-shadow-color</p>
+<p>scrollbar-arrow-color</p>
+<p>scrollbar-face-color</p>
+<p>scrollbar-track-color</p>
+<p>scrollbar-base-color</p>
+<p>filter</p>
+<p>behavior</p>
+
+<h4>（2）Firefox</h4>
+<p>borer-colors</p>
+<p>border-top-colors</p>
+<p>border-right-colors</p>
+<p>border-bottom-colors</p>
+<p>border-left-colors</p>
+
+<h4>（3）Webkit</h4>
+<p>text-fill-color</p>
+<p>text-stroke</p>
+<p>text-stroke-width</p>
+<p>text-stroke-color</p>
+<p>box-reflect</p>
+<p>tap-highlight-color</p>
+<p>user-darg</p>
+
+<h1 id="others">其他</h1>
+<p>will-change：允许开发者提前告知浏览器要对元素做什么动画，这样浏览器可以提前准备合适的优化设置</p>
+<p>touch-action：设置某个给定的区域是否允许用户操作，以及如何响应用户操作</p>
+<p>box-reflect：设置元素的倒影</p>
+<p>filter：设置滤镜</p>
+
+<p>initial：如果你想重置某个属性为默认设置，那么就可以使用该值</p>
+<p>inherit：继承父元素的属性</p>
+<p>unset：一个属性定义了unset值，如果该属性是默认继承属性，该值等同于inherit，如果该属性是非继承属性，该值等同于initial</p>
+
+</body>
+</html>
